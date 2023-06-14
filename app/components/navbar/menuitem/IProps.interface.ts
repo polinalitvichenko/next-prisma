@@ -1,4 +1,4 @@
-export interface IPropsUserMenu {
+export interface IPropsMenuItem {
   label: string
-  onClick?: () => void
+  onClick: () => void
 }

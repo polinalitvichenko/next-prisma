@@ -1,6 +1,9 @@
 import NavBar from './components/navbar/NavBar'
 import './globals.css'
-import { Nunito } from 'next/font/google'
+import { Nunito } from 'next/font/google';
+import { ClientOnly } from './components/ClientOnly/ClientOnly';
+import Modal from './components/modals/Modal';
+import RegisterModal from './components/modals/registermodal/RegisterModal';
 
 const nunito = Nunito({ subsets: ['latin'] })
 
@@ -16,9 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={nunito.className}>
-      <NavBar />
-      {children}
+<body>
+       <ClientOnly>
+          <RegisterModal />
+          <NavBar />
+        </ClientOnly>
+        {children}
       </body>
     </html>
   )
