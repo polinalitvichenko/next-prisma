@@ -3,9 +3,17 @@
 import React from 'react';
 import { IPropsButton } from './IProps.interface';
 
-const Button: React.FC<IPropsButton> = ({ label, onClick, disabled, outline, small, icon: Icon }) => {
+const Button: React.FC<IPropsButton> = ({
+  label,
+  onClick,
+  disabled,
+  outline,
+  small,
+  icon: Icon,
+}) => {
   return (
-    <button className={`
+    <button
+      className={`
       relative
       disabled:opacity-70
       disabled:cursor-not-allowed
@@ -21,18 +29,12 @@ const Button: React.FC<IPropsButton> = ({ label, onClick, disabled, outline, sma
       ${small ? 'font-light' : 'font-semibold'}
       ${small ? 'border-[1px]' : 'border-2'}
     `}
-    onClick={onClick}
-    disabled={disabled}
-    >
-      {Icon && (
-        <Icon 
-          size={24}
-          className='absolute left-4 top-3'
-        />
-      )}
+      onClick={onClick}
+      disabled={disabled}>
+      {Icon && <Icon size={24} className="absolute left-4 top-3" />}
       {label}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

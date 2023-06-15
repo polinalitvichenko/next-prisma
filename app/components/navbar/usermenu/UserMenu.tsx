@@ -5,6 +5,7 @@ import Avatar from '../../avatar/Avatar';
 import React from 'react';
 import MenuItem from '../menuitem/MenuItem';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
+import styles from './index.module.scss';
 
 const UserMenu: React.FC = (): JSX.Element => {
   const registerModal = useRegisterModal();
@@ -15,23 +16,19 @@ const UserMenu: React.FC = (): JSX.Element => {
   }, []);
 
   return (
-    <div className="relative">
-      <div className="flex flex-row items-center gap-3">
-        <div className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
-          Airbnb your home
-        </div>
-        <div
-          onClick={toggleOpen}
-          className="px-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition">
+    <div className={styles.userMenuContainer}>
+      <div className={styles.userMenuContainerWrapper}>
+        <div className={styles.userMenuContainerWrapperHomePage}>Airbnb your home</div>
+        <div onClick={toggleOpen} className={styles.userMenuContainerOutlineMenu}>
           <AiOutlineMenu />
-          <div className="hidden md:block">
+          <div className={styles.userMenuContainerAvatar}>
             <Avatar />
           </div>
         </div>
       </div>
       {isOpen && (
-        <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
-          <div className="flex flex-col cursor-pointer">
+        <div className={styles.outlineMenuContainer}>
+          <div className={styles.outlineMenuContainerWrapper}>
             <MenuItem label="Login" onClick={registerModal.onOpen} />
             <MenuItem label="Sign Up" onClick={registerModal.onOpen} />
           </div>
